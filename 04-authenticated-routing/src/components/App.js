@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import '../styles/App.css';
 
-import Home from './HomeComponent';
-import Hello from './HelloComponent';
+import Admin from './Admin'
 import About from './AboutComponent';
 import Books from './BooksComponent';
+import Hello from './HelloComponent';
+import Home from './HomeComponent';
+import { fakedAuth ,Login } from './Login'
+import PrivateRoute from './PrivateRoute'
+
+
 
 
 // import route Components here
@@ -27,9 +32,8 @@ class App extends Component {
             <ul>
               <li><Link to="/hello">Hello</Link></li>
               <li><Link to="/about">About</Link></li>
-              <li>
-                <Link to="/books">Books</Link>
-              </li>
+              <li><Link to="/books">Books</Link></li>
+              <li><Link to="/admin">Data DashBoard</Link></li>
             </ul>
             <hr/>
 
@@ -38,6 +42,8 @@ class App extends Component {
             <Route path="/about" component={About} />
             <Route path="/hello" component={Hello} />
             <Route path="/books" component={Books} />
+            <Route path='/login' component={Login}/>
+            <PrivateRoute authed={fakedAuth.isAuthenticated} path='/admin' component={Admin} />
           </Switch>
 
           </div>
